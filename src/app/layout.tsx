@@ -27,7 +27,16 @@ const jetbrains = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Tricode Digital — Engineering Digital Excellence",
   description:
-    "Bespoke software architecture and technical strategy for high-growth products. We transform complex challenges into elegant digital foundations.",
+    "Bespoke software architecture and technical strategy for high-growth products. Transforming complex challenges into elegant digital foundations.",
+  icons: {
+    icon: [
+      { url: "/favicon_io/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon_io/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+    ],
+    shortcut: "/favicon_io/favicon.ico",
+    apple: "/favicon_io/apple-touch-icon.png",
+  },
+  manifest: "/favicon_io/site.webmanifest",
   openGraph: {
     title: "Tricode Digital",
     description:
