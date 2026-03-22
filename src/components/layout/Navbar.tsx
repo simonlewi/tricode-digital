@@ -9,6 +9,7 @@ export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
+    <>
     <header
       className="fixed top-0 left-0 right-0 z-[100] border-b border-white/5 backdrop-blur-[20px]"
       style={{ background: "rgba(10,10,20,0.6)", padding: "0.4rem 0" }}
@@ -59,30 +60,40 @@ export function Navbar() {
         </button>
       </nav>
 
-      {/* Mobile overlay */}
+    </header>
+
+      {/* Mobile overlay — rendered outside header to avoid stacking issues */}
       {mobileOpen && (
-        <div className="fixed inset-0 top-[calc(81px+0.8rem)] z-[99] bg-bg-primary backdrop-blur-xl md:hidden">
-          <div className="flex flex-col items-center gap-8 pt-12">
-            {NAV_LINKS.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-lg font-medium text-text-secondary transition-colors hover:text-text-primary"
-                onClick={() => setMobileOpen(false)}
-              >
-                {link.label}
-              </a>
-            ))}
+        <div
+          className="fixed inset-0 z-[101] flex flex-col items-center justify-center gap-8 md:hidden"
+          style={{ background: "#0A0A14" }}
+        >
+          <button
+            className="absolute top-5 right-5 text-text-primary"
+            onClick={() => setMobileOpen(false)}
+            aria-label="Close menu"
+          >
+            <X className="h-6 w-6" />
+          </button>
+          {NAV_LINKS.map((link) => (
             <a
-              href="#contact"
-              className="rounded-full bg-accent-purple px-6 py-3 text-lg font-bold text-text-primary"
+              key={link.href}
+              href={link.href}
+              className="text-2xl font-medium text-text-secondary transition-colors hover:text-text-primary"
               onClick={() => setMobileOpen(false)}
             >
-              Let&apos;s Talk
+              {link.label}
             </a>
-          </div>
+          ))}
+          <a
+            href="#contact"
+            className="rounded-full bg-accent-purple px-8 py-4 text-xl font-bold text-text-primary"
+            onClick={() => setMobileOpen(false)}
+          >
+            Let&apos;s Talk
+          </a>
         </div>
       )}
-    </header>
+    </>
   );
 }
