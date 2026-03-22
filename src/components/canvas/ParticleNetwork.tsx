@@ -54,30 +54,32 @@ const COLORS: Color[] = [
   { r: 250, g: 245, b: 239 },
 ];
 
-const CONFIG = {
-  particleCount: 140,
-  clusterCount: 5,
-  clusterRadius: 120,
-  clusterGravity: 0.0003,
-  connectionDist: 150,
-  connectionDistCluster: 200,
-  particleMinSize: 1,
-  particleMaxSize: 3,
-  baseSpeed: 0.12,
-  mouseInfluenceRadius: 200,
-  mouseRepelStrength: 0.08,
-  pulseSpawnRate: 0.04,
-  pulseSpeed: 2.0,
-  pulseLength: 0.24,
-  pulseLineWidth: 1.8,
-  pulseGlowWidth: 8,
-  pulseMaxActive: 30,
-  streamSpawnInterval: 80,
-  streamSpeed: 1.0,
-  streamLength: 0.17,
-  streamLineWidth: 2.2,
-  streamGlowWidth: 14,
-};
+function getConfig(isMobile: boolean) {
+  return {
+    particleCount: isMobile ? 50 : 140,
+    clusterCount: isMobile ? 3 : 5,
+    clusterRadius: isMobile ? 80 : 120,
+    clusterGravity: 0.0003,
+    connectionDist: isMobile ? 120 : 150,
+    connectionDistCluster: isMobile ? 160 : 200,
+    particleMinSize: 1,
+    particleMaxSize: isMobile ? 2.5 : 3,
+    baseSpeed: 0.12,
+    mouseInfluenceRadius: 200,
+    mouseRepelStrength: 0.08,
+    pulseSpawnRate: isMobile ? 0.02 : 0.04,
+    pulseSpeed: 2.0,
+    pulseLength: 0.24,
+    pulseLineWidth: 1.8,
+    pulseGlowWidth: 8,
+    pulseMaxActive: isMobile ? 15 : 30,
+    streamSpawnInterval: isMobile ? 120 : 80,
+    streamSpeed: 1.0,
+    streamLength: 0.17,
+    streamLineWidth: 2.2,
+    streamGlowWidth: 14,
+  };
+}
 
 export function ParticleNetwork() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -91,6 +93,7 @@ export function ParticleNetwork() {
     mouse: { x: number; y: number };
     frameCount: number;
     rafId: number;
+    config: ReturnType<typeof getConfig>;
   }>({
     W: 0,
     H: 0,
@@ -101,26 +104,34 @@ export function ParticleNetwork() {
     mouse: { x: -9999, y: -9999 },
     frameCount: 0,
     rafId: 0,
+    config: getConfig(false),
   });
 
-  const generateClusters = useCallback((W: number, H: number): Cluster[] => {
-    const positions = [
-      { x: W * 0.5, y: H * 0.3 },
-      { x: W * 0.62, y: H * 0.55 },
-      { x: W * 0.74, y: H * 0.32 },
-      { x: W * 0.83, y: H * 0.6 },
-      { x: W * 0.92, y: H * 0.38 },
-    ];
-    return positions.slice(0, CONFIG.clusterCount).map((pos, i) => ({
+  const generateClusters = useCallback((W: number, H: number, config: ReturnType<typeof getConfig>): Cluster[] => {
+    const isMobile = W < 768;
+    const positions = isMobile
+      ? [
+          { x: W * 0.3, y: H * 0.25 },
+          { x: W * 0.7, y: H * 0.5 },
+          { x: W * 0.5, y: H * 0.75 },
+        ]
+      : [
+          { x: W * 0.5, y: H * 0.3 },
+          { x: W * 0.62, y: H * 0.55 },
+          { x: W * 0.74, y: H * 0.32 },
+          { x: W * 0.83, y: H * 0.6 },
+          { x: W * 0.92, y: H * 0.38 },
+        ];
+    return positions.slice(0, config.clusterCount).map((pos, i) => ({
       x: pos.x,
       y: pos.y,
-      radius: CONFIG.clusterRadius + Math.random() * 60,
+      radius: config.clusterRadius + Math.random() * 60,
       colorIdx: i % COLORS.length,
     }));
   }, []);
 
   const createParticle = useCallback(
-    (clusters: Cluster[], W: number, H: number): Particle => {
+    (clusters: Cluster[], W: number, H: number, config: ReturnType<typeof getConfig>): Particle => {
       const hasCluster = Math.random() < 0.6 && clusters.length > 0;
       const cluster = hasCluster
         ? clusters[Math.floor(Math.random() * clusters.length)]
@@ -148,12 +159,12 @@ export function ParticleNetwork() {
         y,
         originX: x,
         originY: y,
-        vx: (Math.random() - 0.5) * CONFIG.baseSpeed * 2,
-        vy: (Math.random() - 0.5) * CONFIG.baseSpeed * 2,
+        vx: (Math.random() - 0.5) * config.baseSpeed * 2,
+        vy: (Math.random() - 0.5) * config.baseSpeed * 2,
         size: isNode
-          ? CONFIG.particleMaxSize + Math.random() * 2
-          : CONFIG.particleMinSize +
-            Math.random() * (CONFIG.particleMaxSize - CONFIG.particleMinSize),
+          ? config.particleMaxSize + Math.random() * 2
+          : config.particleMinSize +
+            Math.random() * (config.particleMaxSize - config.particleMinSize),
         color: c,
         alpha: isNode ? 0.9 : 0.25 + Math.random() * 0.45,
         cluster,
@@ -181,17 +192,18 @@ export function ParticleNetwork() {
       state.dpr = Math.min(window.devicePixelRatio || 1, 2);
       state.W = parent.clientWidth;
       state.H = parent.clientHeight;
+      state.config = getConfig(state.W < 768);
       canvas!.width = state.W * state.dpr;
       canvas!.height = state.H * state.dpr;
       canvas!.style.width = state.W + "px";
       canvas!.style.height = state.H + "px";
       ctx!.setTransform(state.dpr, 0, 0, state.dpr, 0, 0);
 
-      state.clusters = generateClusters(state.W, state.H);
+      state.clusters = generateClusters(state.W, state.H, state.config);
       state.particles = [];
-      for (let i = 0; i < CONFIG.particleCount; i++) {
+      for (let i = 0; i < state.config.particleCount; i++) {
         state.particles.push(
-          createParticle(state.clusters, state.W, state.H)
+          createParticle(state.clusters, state.W, state.H, state.config)
         );
       }
       state.pulses = [];
@@ -202,7 +214,8 @@ export function ParticleNetwork() {
       toP: { x: number; y: number; vx?: number; vy?: number; color: Color },
       isStream: boolean
     ) {
-      if (state.pulses.length >= CONFIG.pulseMaxActive) return;
+      const c = state.config;
+      if (state.pulses.length >= c.pulseMaxActive) return;
       state.pulses.push({
         fromX: fromP.x,
         fromY: fromP.y,
@@ -211,10 +224,10 @@ export function ParticleNetwork() {
         from: fromP,
         to: toP,
         progress: 0,
-        speed: isStream ? CONFIG.streamSpeed : CONFIG.pulseSpeed,
-        length: isStream ? CONFIG.streamLength : CONFIG.pulseLength,
-        lineWidth: isStream ? CONFIG.streamLineWidth : CONFIG.pulseLineWidth,
-        glowWidth: isStream ? CONFIG.streamGlowWidth : CONFIG.pulseGlowWidth,
+        speed: isStream ? c.streamSpeed : c.pulseSpeed,
+        length: isStream ? c.streamLength : c.pulseLength,
+        lineWidth: isStream ? c.streamLineWidth : c.pulseLineWidth,
+        glowWidth: isStream ? c.streamGlowWidth : c.pulseGlowWidth,
         colorFrom: fromP.color || COLORS[0],
         colorTo: toP.color || COLORS[1],
         isStream,
@@ -222,7 +235,8 @@ export function ParticleNetwork() {
     }
 
     function spawnRandomPulses() {
-      if (Math.random() < CONFIG.pulseSpawnRate) {
+      const c = state.config;
+      if (Math.random() < c.pulseSpawnRate) {
         const a =
           state.particles[Math.floor(Math.random() * state.particles.length)];
         let closest: Particle | null = null;
@@ -235,8 +249,8 @@ export function ParticleNetwork() {
           const dist = Math.sqrt(dx * dx + dy * dy);
           const maxDist =
             a.cluster && b.cluster
-              ? CONFIG.connectionDistCluster
-              : CONFIG.connectionDist;
+              ? c.connectionDistCluster
+              : c.connectionDist;
           if (dist < maxDist && dist < closestDist) {
             closestDist = dist;
             closest = b;
@@ -248,7 +262,7 @@ export function ParticleNetwork() {
       }
 
       if (
-        state.frameCount % CONFIG.streamSpawnInterval === 0 &&
+        state.frameCount % c.streamSpawnInterval === 0 &&
         state.clusters.length >= 2
       ) {
         const idxA = Math.floor(Math.random() * state.clusters.length);
@@ -357,8 +371,8 @@ export function ParticleNetwork() {
 
           const maxDist =
             a.cluster && b.cluster
-              ? CONFIG.connectionDistCluster
-              : CONFIG.connectionDist;
+              ? state.config.connectionDistCluster
+              : state.config.connectionDist;
 
           if (dist < maxDist) {
             const opacity = (1 - dist / maxDist) * 0.2;
@@ -442,6 +456,7 @@ export function ParticleNetwork() {
     }
 
     function update() {
+      const c = state.config;
       for (const p of state.particles) {
         p.x += p.vx;
         p.y += p.vy;
@@ -449,17 +464,17 @@ export function ParticleNetwork() {
         if (p.cluster) {
           const dx = p.originX - p.x;
           const dy = p.originY - p.y;
-          p.vx += dx * CONFIG.clusterGravity;
-          p.vy += dy * CONFIG.clusterGravity;
+          p.vx += dx * c.clusterGravity;
+          p.vy += dy * c.clusterGravity;
         }
 
         const mdx = p.x - state.mouse.x;
         const mdy = p.y - state.mouse.y;
         const mDist = Math.sqrt(mdx * mdx + mdy * mdy);
-        if (mDist < CONFIG.mouseInfluenceRadius && mDist > 0) {
+        if (mDist < c.mouseInfluenceRadius && mDist > 0) {
           const force =
-            (1 - mDist / CONFIG.mouseInfluenceRadius) *
-            CONFIG.mouseRepelStrength;
+            (1 - mDist / c.mouseInfluenceRadius) *
+            c.mouseRepelStrength;
           p.vx += (mdx / mDist) * force;
           p.vy += (mdy / mDist) * force;
         }

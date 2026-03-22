@@ -61,7 +61,7 @@ export function Navbar() {
 
       {/* Mobile overlay */}
       {mobileOpen && (
-        <div className="fixed inset-0 top-[calc(81px+0.8rem)] z-[99] bg-bg-primary/95 backdrop-blur-xl md:hidden">
+        <div className="fixed inset-0 top-[calc(81px+0.8rem)] z-[99] bg-bg-primary backdrop-blur-xl md:hidden">
           <div className="flex flex-col items-center gap-8 pt-12">
             {NAV_LINKS.map((link) => (
               <a
