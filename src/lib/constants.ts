@@ -1,7 +1,7 @@
 export const SITE = {
   name: "Tricode Digital",
   domain: "tricode.digital",
-  email: "simon@tricode.digital",
+  email: "tricodedigital@gmail.com",
   linkedin: "https://linkedin.com/in/simon-wilen/", // UPDATE
   github: "https://github.com/simonlewi", // UPDATE
 };
