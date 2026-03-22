@@ -101,7 +101,7 @@ export function HeroSection() {
         <div className="max-w-[560px]">
           {/* Badge */}
           <span
-            className="mb-8 inline-block rounded-full border border-accent-purple/25 bg-accent-purple/10 px-4 py-1.5 text-[0.7rem] font-bold uppercase tracking-[0.15em] text-accent-purple backdrop-blur-xl opacity-0 translate-y-5 animate-[fadeUp_0.7s_ease_0.3s_forwards]"
+            className="mb-8 inline-block rounded-full border border-accent-purple/25 bg-accent-purple/10 px-4 py-1.5 text-[0.7rem] font-bold uppercase tracking-[0.15em] text-accent-purple-light backdrop-blur-xl opacity-0 translate-y-5 animate-[fadeUp_0.7s_ease_0.3s_forwards]"
           >
             {HERO.badge}
           </span>
@@ -112,7 +112,7 @@ export function HeroSection() {
           >
             {HERO.headline}
             <br />
-            <em className="italic text-accent-purple">{HERO.headlineAccent}</em>
+            <em className="italic text-accent-purple-light">{HERO.headlineAccent}</em>
           </h1>
 
           {/* Subline */}

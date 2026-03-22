@@ -16,7 +16,7 @@ export function SectionHeader({
   return (
     <div className={alignClass}>
       {eyebrow && (
-        <span className="inline-block font-mono text-xs font-semibold uppercase tracking-[0.2em] text-accent-purple mb-4">
+        <span className="inline-block font-mono text-xs font-semibold uppercase tracking-[0.2em] text-accent-purple-light mb-4">
           {eyebrow}
         </span>
       )}

@@ -65,7 +65,7 @@ export const LEVELMIX = {
   ],
   highlights: [
     "Production SaaS with paying customers",
-    "Cost-optimized: server costs under 100 SEK/month",
+    "99.9% uptime",
     "Full-stack ownership from architecture to deployment",
   ],
   url: "https://levelmix.io",
