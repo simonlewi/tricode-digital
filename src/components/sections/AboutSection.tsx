@@ -41,7 +41,7 @@ export function AboutSection() {
           <ScrollReveal direction="right">
             <div>
               <p className="text-lg leading-relaxed text-text-secondary">
-                Full-stack engineer and technical consultant based in
+                Software engineer and cloud consultant based in
                 Gothenburg, Sweden. I build products from the ground up —
                 architecture, infrastructure, code, and design — with a focus on
                 quality, simplicity, and ownership.
@@ -49,7 +49,7 @@ export function AboutSection() {
               <p className="mt-4 text-lg leading-relaxed text-text-secondary">
                 Whether it&apos;s a production SaaS, a cloud migration, or a
                 greenfield platform build, I bring senior-level thinking with
-                hands-on execution. One person, full ownership, no handoffs.
+                hands-on execution. One person, full ownership.
               </p>
 
               {/* Credentials */}
