@@ -55,12 +55,17 @@ export function AboutSection() {
 
               {/* Credentials */}
               <div className="mt-8 flex flex-wrap gap-3">
-                <div className="inline-flex items-center gap-2 rounded-lg border border-border bg-bg-elevated/60 px-4 py-2">
+                <a
+                  href="https://www.credly.com/badges/97fcd7b4-3241-4ae6-82a6-9bbee48ed71c"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-lg border border-border bg-bg-elevated/60 px-4 py-2 transition-colors hover:border-accent-gold/50 hover:bg-accent-gold/5"
+                >
                   <Award className="h-4 w-4 text-accent-gold" />
                   <span className="text-sm font-medium text-text-primary">
                     AWS SAA-C03
                   </span>
-                </div>
+                </a>
               </div>
             </div>
           </ScrollReveal>
