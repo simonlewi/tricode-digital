@@ -4,14 +4,17 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { TechBadge } from "@/components/ui/TechBadge";
 import { ScrollReveal } from "@/components/layout/ScrollReveal";
 import { LEVELMIX } from "@/lib/constants";
+import { useLanguage } from "@/context/LanguageContext";
 import { ExternalLink, CheckCircle } from "lucide-react";
 
 export function CaseStudySection() {
+  const { t } = useLanguage();
+
   return (
     <section id="work" className="relative z-[5] bg-bg-primary py-32">
       <div className="mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
         <ScrollReveal>
-          <SectionHeader eyebrow="Work" heading={LEVELMIX.title} align="left" />
+          <SectionHeader eyebrow={t.work.eyebrow} heading={LEVELMIX.title} align="left" />
         </ScrollReveal>
 
         <div className="mt-12 grid grid-cols-1 gap-12 md:grid-cols-[55fr_45fr]">
@@ -23,7 +26,7 @@ export function CaseStudySection() {
                   {LEVELMIX.title}
                 </p>
                 <p className="mt-2 text-sm text-text-tertiary">
-                  Screenshot coming soon
+                  {t.work.screenshotSoon}
                 </p>
                 {LEVELMIX.url && (
                   <a
@@ -32,7 +35,7 @@ export function CaseStudySection() {
                     rel="noopener noreferrer"
                     className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-accent-purple transition-colors hover:text-accent-orange"
                   >
-                    Visit live site
+                    {t.work.visitLive}
                     <ExternalLink className="h-3.5 w-3.5" />
                   </a>
                 )}
@@ -44,7 +47,7 @@ export function CaseStudySection() {
           <ScrollReveal direction="right">
             <div>
               <p className="text-lg leading-relaxed text-text-secondary">
-                {LEVELMIX.description}
+                {t.work.description}
               </p>
 
               {/* Tech badges */}
@@ -56,9 +59,9 @@ export function CaseStudySection() {
 
               {/* Highlights */}
               <ul className="mt-8 space-y-3">
-                {LEVELMIX.highlights.map((point) => (
+                {t.work.highlights.map((point, i) => (
                   <li
-                    key={point}
+                    key={i}
                     className="flex items-start gap-3 text-text-secondary"
                   >
                     <CheckCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-accent-purple" />

@@ -3,9 +3,12 @@
 import Image from "next/image";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { ScrollReveal } from "@/components/layout/ScrollReveal";
+import { useLanguage } from "@/context/LanguageContext";
 import { Award } from "lucide-react";
 
 export function AboutSection() {
+  const { t } = useLanguage();
+
   return (
     <section
       id="about"
@@ -18,7 +21,7 @@ export function AboutSection() {
     >
       <div className="mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
         <ScrollReveal>
-          <SectionHeader eyebrow="About" heading="Simon" align="left" />
+          <SectionHeader eyebrow={t.about.eyebrow} heading={t.about.heading} align="left" />
         </ScrollReveal>
 
         <div className="mt-12 grid grid-cols-1 gap-12 md:grid-cols-[40fr_60fr]">
@@ -41,15 +44,10 @@ export function AboutSection() {
           <ScrollReveal direction="right">
             <div>
               <p className="text-lg leading-relaxed text-text-secondary">
-                Software engineer and cloud consultant based in
-                Gothenburg, Sweden. I build products from the ground up —
-                architecture, infrastructure, code, and design — with a focus on
-                quality, simplicity, and ownership.
+                {t.about.bio1}
               </p>
               <p className="mt-4 text-lg leading-relaxed text-text-secondary">
-                Whether it&apos;s a production SaaS, a cloud migration, or a
-                greenfield platform build, I bring senior-level thinking with
-                hands-on execution. One person, full ownership.
+                {t.about.bio2}
               </p>
 
               {/* Credentials */}

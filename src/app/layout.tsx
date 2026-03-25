@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Inter, JetBrains_Mono } from "next/font/google";
+import { LanguageProvider } from "@/context/LanguageContext";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -27,7 +28,7 @@ const jetbrains = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Tricode Digital — Engineering Digital Excellence",
   description:
-    "Bespoke software architecture and technical strategy for high-growth products. Transforming complex challenges into elegant digital foundations.",
+    "Bespoke software solutions and technical strategy for high-growth products. Transforming complex challenges into elegant digital foundations.",
   icons: {
     icon: [
       { url: "/favicon_io/favicon-32x32.png", sizes: "32x32", type: "image/png" },
@@ -40,7 +41,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Tricode Digital",
     description:
-      "Bespoke software architecture and technical strategy for high-growth products.",
+      "Bespoke software solutions and technical strategy for high-growth products.",
     url: "https://tricode.digital",
     siteName: "Tricode Digital",
     locale: "en_US",
@@ -63,7 +64,9 @@ export default function RootLayout({
           Skip to content
         </a>
         <div className="grain" aria-hidden="true" />
-        {children}
+        <LanguageProvider>
+          {children}
+        </LanguageProvider>
       </body>
     </html>
   );

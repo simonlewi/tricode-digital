@@ -4,8 +4,17 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { ServiceCard } from "@/components/ui/ServiceCard";
 import { ScrollReveal } from "@/components/layout/ScrollReveal";
 import { SERVICES } from "@/lib/constants";
+import { useLanguage } from "@/context/LanguageContext";
 
 export function ServicesSection() {
+  const { t } = useLanguage();
+
+  const services = SERVICES.map((s, i) => ({
+    icon: s.icon,
+    title: t.services.items[i].title,
+    description: t.services.items[i].description,
+  }));
+
   return (
     <section
       id="services"
@@ -19,15 +28,15 @@ export function ServicesSection() {
       <div className="mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
         <ScrollReveal>
           <SectionHeader
-            eyebrow="Services"
-            heading="What I Build"
-            description="End-to-end engineering for products that need to scale. From infrastructure to interface."
+            eyebrow={t.services.eyebrow}
+            heading={t.services.heading}
+            description={t.services.description}
           />
         </ScrollReveal>
 
         <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-2">
-          {SERVICES.map((service, i) => (
-            <ScrollReveal key={service.title} delay={i * 0.1}>
+          {services.map((service, i) => (
+            <ScrollReveal key={i} delay={i * 0.1}>
               <ServiceCard
                 icon={service.icon}
                 title={service.title}

@@ -3,10 +3,11 @@
 import { useEffect, useRef } from "react";
 import { ParticleNetwork } from "@/components/canvas/ParticleNetwork";
 import { GradientButton } from "@/components/ui/GradientButton";
-import { HERO } from "@/lib/constants";
+import { useLanguage } from "@/context/LanguageContext";
 import { ChevronDown, ArrowRight } from "lucide-react";
 
 export function HeroSection() {
+  const { t } = useLanguage();
   const bgRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const indicatorRef = useRef<HTMLDivElement>(null);
@@ -103,23 +104,23 @@ export function HeroSection() {
           <span
             className="mb-8 inline-block rounded-full border border-accent-purple/25 bg-accent-purple/10 px-4 py-1.5 text-[0.7rem] font-bold uppercase tracking-[0.15em] text-accent-purple-light backdrop-blur-xl opacity-0 translate-y-5 animate-[fadeUp_0.7s_ease_0.3s_forwards]"
           >
-            {HERO.badge}
+            {t.hero.badge}
           </span>
 
           {/* Headline */}
           <h1
-            className="mb-6 font-heading text-[clamp(3rem,8vw,6.5rem)] font-black leading-[1.05] text-text-primary opacity-0 translate-y-[30px] animate-[fadeUp_0.8s_ease_0.5s_forwards]"
+            className="mb-6 font-heading text-[clamp(3rem,8vw,6.5rem)] font-black tracking-wide leading-[1.05] text-text-primary opacity-0 translate-y-[30px] animate-[fadeUp_0.8s_ease_0.5s_forwards]"
           >
-            {HERO.headline}
+            {t.hero.headline}
             <br />
-            <em className="italic text-accent-purple-light">{HERO.headlineAccent}</em>
+            <em className="italic text-accent-purple-light">{t.hero.headlineAccent}</em>
           </h1>
 
           {/* Subline */}
           <p
             className="mb-10 max-w-[480px] text-lg leading-relaxed text-text-secondary opacity-0 translate-y-5 animate-[fadeUp_0.7s_ease_0.8s_forwards]"
           >
-            {HERO.subline}
+            {t.hero.subline}
           </p>
 
           {/* Buttons */}
@@ -127,11 +128,11 @@ export function HeroSection() {
             className="flex flex-wrap gap-4 opacity-0 translate-y-5 animate-[fadeUp_0.7s_ease_1.1s_forwards]"
           >
             <GradientButton variant="primary" href="#services" size="lg">
-              {HERO.cta}
+              {t.hero.cta}
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </GradientButton>
             <GradientButton variant="outline" href="#work" size="lg">
-              {HERO.ctaSecondary}
+              {t.hero.ctaSecondary}
             </GradientButton>
           </div>
         </div>

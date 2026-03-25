@@ -17,7 +17,7 @@ export const HERO = {
   headline: "Engineering",
   headlineAccent: "Digital Excellence.",
   subline:
-    "Bespoke software architecture and technical strategy for high-growth products. Transforming complex challenges into elegant digital foundations.",
+    "Bespoke software solutions and technical strategy for high-growth products. Transforming complex challenges into elegant digital foundations.",
   cta: "View Services",
   ctaSecondary: "See Case Studies",
 };

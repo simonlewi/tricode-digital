@@ -2,9 +2,12 @@
 
 import { ScrollReveal } from "@/components/layout/ScrollReveal";
 import { SITE } from "@/lib/constants";
+import { useLanguage } from "@/context/LanguageContext";
 import { Mail, Linkedin, Github } from "lucide-react";
 
 export function ContactSection() {
+  const { t } = useLanguage();
+
   return (
     <section
       id="contact"
@@ -13,7 +16,7 @@ export function ContactSection() {
       <div className="mx-auto max-w-lg px-6 text-center">
         <ScrollReveal>
           <h2 className="font-heading text-4xl font-bold text-text-primary md:text-5xl">
-            Let&apos;s work together
+            {t.contact.heading}
           </h2>
         </ScrollReveal>
 

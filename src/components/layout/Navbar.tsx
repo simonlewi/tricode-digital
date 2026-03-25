@@ -4,9 +4,14 @@ import { useState } from "react";
 import Image from "next/image";
 import { NAV_LINKS } from "@/lib/constants";
 import { Menu, X } from "lucide-react";
+import { LanguageToggle } from "@/components/ui/LanguageToggle";
+import { useLanguage } from "@/context/LanguageContext";
 
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { t } = useLanguage();
+
+  const navLabels = [t.nav.services, t.nav.work, t.nav.about];
 
   return (
     <>
@@ -32,20 +37,21 @@ export function Navbar() {
 
         {/* Desktop links */}
         <div className="hidden items-center gap-10 md:flex">
-          {NAV_LINKS.map((link) => (
+          {NAV_LINKS.map((link, i) => (
             <a
               key={link.href}
               href={link.href}
               className="text-sm font-medium text-text-secondary transition-colors duration-200 hover:text-text-primary"
             >
-              {link.label}
+              {navLabels[i]}
             </a>
           ))}
+          <LanguageToggle />
           <a
             href="#contact"
             className="rounded-full bg-accent-purple px-5 py-2.5 text-sm font-bold text-text-primary transition-opacity duration-200 hover:opacity-90"
           >
-            Let&apos;s Talk
+            {t.nav.cta}
           </a>
         </div>
 
@@ -75,22 +81,23 @@ export function Navbar() {
           >
             <X className="h-6 w-6" />
           </button>
-          {NAV_LINKS.map((link) => (
+          {NAV_LINKS.map((link, i) => (
             <a
               key={link.href}
               href={link.href}
               className="text-2xl font-medium text-text-secondary transition-colors hover:text-text-primary"
               onClick={() => setMobileOpen(false)}
             >
-              {link.label}
+              {navLabels[i]}
             </a>
           ))}
+          <LanguageToggle />
           <a
             href="#contact"
             className="rounded-full bg-accent-purple px-8 py-4 text-xl font-bold text-text-primary"
             onClick={() => setMobileOpen(false)}
           >
-            Let&apos;s Talk
+            {t.nav.cta}
           </a>
         </div>
       )}
