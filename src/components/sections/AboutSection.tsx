@@ -49,6 +49,9 @@ export function AboutSection() {
               <p className="mt-4 text-lg leading-relaxed text-text-secondary">
                 {t.about.bio2}
               </p>
+              <p className="mt-4 text-lg leading-relaxed text-text-secondary">
+                {t.about.bio3}
+              </p>
 
               {/* Credentials */}
               <div className="mt-8 flex flex-wrap gap-3">

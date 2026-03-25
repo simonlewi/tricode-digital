@@ -45,6 +45,12 @@ export function ServicesSection() {
             </ScrollReveal>
           ))}
         </div>
+
+        <ScrollReveal delay={0.4}>
+          <p className="mt-12 text-center text-sm text-text-tertiary">
+            {t.services.engagement}
+          </p>
+        </ScrollReveal>
       </div>
     </section>
   );

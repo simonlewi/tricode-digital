@@ -9,62 +9,66 @@ export const translations = {
       cta: "Let's Talk",
     },
     hero: {
-      badge: 'Premium IT Consultancy',
+      badge: 'AI-Augmented Consultant',
       headline: 'Engineering',
       headlineAccent: 'Digital Excellence.',
       subline:
-        'Bespoke software solutions and technical strategy for high-growth products. Transforming complex challenges into elegant digital foundations.',
+        'Bespoke software solutions, handled by one person who sees the whole picture. Based in Gothenburg, working with clients across Sweden and internationally.',
       cta: 'View Services',
       ctaSecondary: 'See Case Studies',
     },
     services: {
-      eyebrow: 'Services',
-      heading: 'What I Build',
+      eyebrow: 'What I do',
+      heading: 'Four things I\'m good at',
       description:
         'End-to-end engineering for products that need to scale. From infrastructure to interface.',
+      engagement: 'Flexible engagement — project-based or hourly.',
       items: [
         {
           title: 'Cloud Infrastructure',
           description:
-            'Designing resilient, auto-scaling backend ecosystems that grow with your user base. Expert orchestration using AWS and modern CI/CD practices.',
+            'Your backend, built to survive traffic spikes and scale without drama. I set up AWS environments and CI/CD pipelines you won\'t have to babysit.',
         },
         {
           title: 'Custom Software',
           description:
-            'High-performance application development tailored to your business logic. Built for speed, security, and maintainability.',
+            'Application development that fits how your business actually works — not a generic template. Fast, secure, and built to be maintained.',
         },
         {
           title: 'Technical Strategy',
           description:
-            'Bridging the gap between business goals and technical feasibility. Roadmap planning that aligns with long-term scaling objectives.',
+            'Not sure what to build next, or whether your current setup will hold? I\'ll give you a straight answer and a plan to act on it.',
         },
         {
           title: 'Architecture Audit',
           description:
-            'Deep-dive analysis of your existing stack to identify bottlenecks, security vulnerabilities, and opportunities for optimization.',
+            'I go through your existing stack and tell you what\'s holding you back — bottlenecks, security gaps, and what to fix first.',
         },
       ],
     },
     work: {
-      eyebrow: 'Work',
+      eyebrow: 'Real work',
       visitLive: 'Visit live site',
       screenshotSoon: 'Screenshot coming soon',
       description:
-        'A production SaaS for DJ mix audio normalization. Built from scratch as a solo developer — backend, frontend, infrastructure, payments, and deployment.',
+        'A production SaaS for long-format audio normalization. I built and own every part of it: backend in Go, AWS infrastructure, Stripe payments, and deployment. It\'s the clearest example of what I can do end-to-end for your product.',
       highlights: [
-        'Production SaaS with paying customers',
-        '99.9% uptime',
+        'Live product with paying customers',
+        'Solo-built from zero to production',
         'Full-stack ownership from architecture to deployment',
       ],
     },
     about: {
-      eyebrow: 'About',
+      eyebrow: 'Who you\'re working with',
       heading: 'Simon',
-      bio1: 'Software engineer and cloud consultant based in Gothenburg, Sweden. I build products from the ground up — architecture, infrastructure, code, and design — with a focus on quality, simplicity, and ownership.',
+      bio1: 'I\'m Simon, an IT consultant based in Gothenburg. I build software end-to-end — from architecture to deployment — with a focus on systems that actually hold up in production. LevelMix is my most recent example.',
       bio2: "Whether it's a production SaaS, a cloud migration, or a greenfield platform build, I bring senior-level thinking with hands-on execution. One person, full ownership.",
+      bio3: "I integrate AI across my entire workflow — from architecture and code to testing and documentation. It's how one person delivers with the speed and coverage of a full team."
     },
     contact: {
-      heading: "Let's work together",
+      eyebrow: 'Get in touch',
+      heading: "Let's talk about your project",
+      description: "Tell me what you're building and where you're stuck. I'll get back to you within one business day. No sales pitch — just a straight conversation about whether I can help.",
     },
     footer: {
       rights: 'All rights reserved.',
@@ -79,62 +83,66 @@ export const translations = {
       cta: 'Kontakta mig',
     },
     hero: {
-      badge: 'Premium IT-konsult',
-      headline: 'Ingenjörskonst för',
-      headlineAccent: 'Digital Excellens.',
+      badge: 'AI-förstärkt konsult',
+      headline: 'Teknik\u00A0som',
+      headlineAccent: 'Driver\u00A0tillväxt.',
       subline:
-        'Skräddarsydda mjukvarulösningar och teknisk strategi för snabbväxande produkter. Transformerar komplexa utmaningar till eleganta digitala fundament.',
+        'Skräddarsydda mjukvarulösningar, hanterat av en person som ser hela bilden. Baserad i Göteborg, jobbar med klienter i Sverige och internationellt.',
       cta: 'Visa tjänster',
       ctaSecondary: 'Se fallstudier',
     },
     services: {
-      eyebrow: 'Tjänster',
-      heading: 'Vad jag bygger',
+      eyebrow: 'Vad jag bygger',
+      heading: 'Fyra saker jag är bra på',
       description:
         'Komplett ingenjörsarbete för produkter som behöver skalas. Från infrastruktur till gränssnitt.',
+      engagement: 'Flexibelt upplägg — projektbaserat eller per timme.',
       items: [
         {
           title: 'Molninfrastruktur',
           description:
-            'Designar motståndskraftiga, auto-skalande backend-ekosystem som växer med din användarbas. Expert på orkestrering med AWS och moderna CI/CD-metoder.',
+            'Din backend, byggd för att klara trafikspikar och skala utan drama. Jag sätter upp AWS-miljöer och CI/CD-pipelines du inte behöver övervaka.',
         },
         {
           title: 'Skräddarsydd mjukvara',
           description:
-            'Högpresterande applikationsutveckling anpassad till din affärslogik. Byggd för hastighet, säkerhet och underhållbarhet.',
+            'Applikationsutveckling som passar hur ditt företag faktiskt fungerar — inte en generisk mall. Snabbt, säkert och byggt för att kunna underhållas.',
         },
         {
           title: 'Teknisk strategi',
           description:
-            'Överbryggar gapet mellan affärsmål och teknisk genomförbarhet. Vägplanering som stämmer överens med långsiktiga skalbarhetsmål.',
+            'Osäker på vad du ska bygga härnäst, eller om din nuvarande setup håller? Jag ger dig ett rakt svar och en plan att agera på.',
         },
         {
           title: 'Arkitekturrevision',
           description:
-            'Djupgående analys av din befintliga stack för att identifiera flaskhalsar, säkerhetssårbarheter och optimeringsmöjligheter.',
+            'Jag går igenom din befintliga stack och berättar vad som håller dig tillbaka — flaskhalsar, säkerhetsluckor och vad du bör åtgärda först.',
         },
       ],
     },
     work: {
-      eyebrow: 'Projekt',
+      eyebrow: 'I praktiken',
       visitLive: 'Besök live-siten',
       screenshotSoon: 'Skärmbild kommer snart',
       description:
-        'En produktions-SaaS för normalisering av DJ-mix-ljud. Byggd från grunden som soloutvecklare — backend, frontend, infrastruktur, betalningar och driftsättning.',
+        'En produktions-SaaS för normalisering av långformatsljud. Jag har byggt och äger varje del: backend i Go, AWS-infrastruktur, Stripe-betalningar och driftsättning. Det är det tydligaste exemplet på vad jag kan göra end-to-end för din produkt.',
       highlights: [
         'Produktions-SaaS med betalande kunder',
-        '99,9% drifttid',
+        'Solobyggd från noll till produktion',
         'Full-stack-ägarskap från arkitektur till driftsättning',
       ],
     },
     about: {
-      eyebrow: 'Om mig',
+      eyebrow: 'Vem du jobbar med',
       heading: 'Simon',
-      bio1: 'Mjukvaruingenjör och molnkonsult baserad i Göteborg, Sverige. Jag bygger produkter från grunden — arkitektur, infrastruktur, kod och design — med fokus på kvalitet, enkelhet och ägarskap.',
+      bio1: 'Mitt namn är Simon, jag är en IT-konsult baserad i Göteborg. Jag bygger mjukvara end-to-end — från arkitektur till driftsättning — med fokus på system som faktiskt håller i produktion. LevelMix är mitt senaste exempel.',
       bio2: 'Oavsett om det är en produktions-SaaS, en molnmigrering eller en greenfield-plattformsbyggnad, bidrar jag med seniornivåtänkande med hands-on-genomförande. En person, fullt ägarskap.',
+      bio3: 'Jag använder AI genom hela mitt arbetsflöde — från arkitektur och kod till testning och dokumentation. Det är så en person kan leverera med samma hastighet och täckning som ett helt team.'
     },
     contact: {
-      heading: 'Låt oss arbeta tillsammans',
+      eyebrow: 'Kontakta mig',
+      heading: 'Låt oss prata om ditt projekt',
+      description: 'Berätta vad du bygger och var du har kört fast. Jag återkommer inom en arbetsdag. Ingen säljpitch — bara ett rakt samtal om huruvida jag kan hjälpa till.',
     },
     footer: {
       rights: 'Alla rättigheter förbehållna.',
@@ -156,6 +164,7 @@ export type Translations = {
     eyebrow: string;
     heading: string;
     description: string;
+    engagement: string;
     items: readonly { title: string; description: string }[];
   };
   work: {
@@ -165,7 +174,7 @@ export type Translations = {
     description: string;
     highlights: readonly string[];
   };
-  about: { eyebrow: string; heading: string; bio1: string; bio2: string };
-  contact: { heading: string };
+  about: { eyebrow: string; heading: string; bio1: string; bio2: string; bio3: string };
+  contact: { eyebrow: string; heading: string; description: string };
   footer: { rights: string };
 };

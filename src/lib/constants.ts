@@ -27,32 +27,32 @@ export const SERVICES = [
     icon: "cloud" as const,
     title: "Cloud Infrastructure",
     description:
-      "Designing resilient, auto-scaling backend ecosystems that grow with your user base. Expert orchestration using AWS and modern CI/CD practices.",
+      "Your backend, built to survive traffic spikes and scale without drama. I set up AWS environments and CI/CD pipelines you won't have to babysit.",
   },
   {
     icon: "code" as const,
     title: "Custom Software",
     description:
-      "High-performance application development tailored to your business logic. Built for speed, security, and maintainability.",
+      "Application development that fits how your business actually works — not a generic template. Fast, secure, and built to be maintained.",
   },
   {
     icon: "strategy" as const,
     title: "Technical Strategy",
     description:
-      "Bridging the gap between business goals and technical feasibility. Roadmap planning that aligns with long-term scaling objectives.",
+      "Not sure what to build next, or whether your current setup will hold? I'll give you a straight answer and a plan to act on it.",
   },
   {
     icon: "shield" as const,
     title: "Architecture Audit",
     description:
-      "Deep-dive analysis of your existing stack to identify bottlenecks, security vulnerabilities, and opportunities for optimization.",
+      "I go through your existing stack and tell you what's holding you back — bottlenecks, security gaps, and what to fix first.",
   },
 ];
 
 export const LEVELMIX = {
   title: "LevelMix",
   description:
-    "A production SaaS for DJ mix audio normalization. Built from scratch as a solo developer — backend, frontend, infrastructure, payments, and deployment.",
+    "A production SaaS for long-format audio normalization. Built from scratch as a solo developer — backend, frontend, infrastructure, payments, and deployment.",
   techStack: [
     "Go",
     "AWS S3",
